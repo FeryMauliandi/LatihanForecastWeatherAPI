@@ -4,8 +4,14 @@ const getWeatherForecast = async (cityName) => {
         method: "GET",
         headers: {
           "x-rapidapi-host": "weatherapi-com.p.rapidapi.com",
-          "x-rapidapi-key": '7be474de69msh0f71f0666310fc7p1d1d95jsn3e473e8728ec'
+          "x-rapidapi-key": procces.env.API_KEY
         },
+      })
+      .then(response => {
+        console.log(response.json);
+      })
+      .catch(err => {
+        console.error(err);
       });
       const data = await response.json();
       console.log(data);
@@ -14,7 +20,7 @@ const getWeatherForecast = async (cityName) => {
       console.log(error);
       return;
     }
-  }
+  } 
   const displayCityName = (weatherData) => {
       const cityNameDiv = document.getElementById("city-description");
       const cityName = weatherData.location.name;
